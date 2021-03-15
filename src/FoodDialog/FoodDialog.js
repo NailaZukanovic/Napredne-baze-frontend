@@ -25,7 +25,6 @@ const DialogBannerName = styled(FoodLabel)`
 top: 100px;
 font-size: 30px;
 padding: 5px 40px;
-
 `;
 
 const DialogShadow = styled.div`
