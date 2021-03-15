@@ -23,17 +23,26 @@ padding: 5px;
 export const Food = styled(Title)`
 
 height: 100px;
+padding: 10px;
+font-size: 20px;
 background-image: ${({img}) => `url(${img})`};
 background-position: center;
 background-size: cover;
 filter: contrast(75%);
-padding: 10px;
-font-size: 20px;
+
+
 border-radius: 7px;
-box-shadow: 0px 0px 10px 0px grey;
+margin-top: 5px;
+transition-property: box-shadow margin-top filter;
+transition-duration: .1s;
+box-shadow: 0px 0px 2px 0px grey;
 &:hover {
     cursor: pointer;
-    opacity: 0.7;
+    margin-top: 0px;
+    box-shadow: 0px 5px 10px 0px grey;
+    margin-bottom: 5px;
+    filter: contrast(100%);
+    
 }
 
 
