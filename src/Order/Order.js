@@ -8,6 +8,7 @@ import {
 import { formatPrice } from "../Data/FoodData";
 
 import { getPrice } from "../FoodDialog/FoodDialog";
+import {Automobili} from '../Data/FoodData';
 
 const OrderStyled = styled.div`
   position: fixed;
@@ -54,7 +55,7 @@ const DetailItem = styled.div`
   font-size: 10px;
 `;
 
-export function Order({ orders, setOrders, setOpenFood }) {
+export function Order({ orders, setOrders, lsGetOrder, lsOrders, lsUzmiOrdere, setOpenFood }) {
   const subtotal = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
@@ -65,18 +66,26 @@ export function Order({ orders, setOrders, setOpenFood }) {
   const deleteItem = (index) => {
     const newOrders = [...orders];
     newOrders.splice(index, 1);
-    setOrders(newOrders);
+    // setOrders(newOrders);
+    lsGetOrder() //remove iz local storagea
+    lsOrders(newOrders); //postavi novi
+    orders = lsUzmiOrdere();
   };
 
+  let value = true;
+
+  const onChange = () => {
+    value = !value;
+  }
   return (
     <OrderStyled>
-      {orders.length === 0 ? (
+      {lsUzmiOrdere().length === 0 ? (
         <OrderContent>Your order's looking pretty empty.</OrderContent>
       ) : (
         <OrderContent>
           {" "}
           <OrderContainer>Your Order: </OrderContainer>{" "}
-          {orders.map((order, index) => (
+          {lsUzmiOrdere().map((order, index) => (
             <OrderContainer editable>
               <OrderItem
                 onClick={() => {
@@ -105,23 +114,26 @@ export function Order({ orders, setOrders, setOpenFood }) {
               {order.choice && <DetailItem>{order.choice}</DetailItem>}
             </OrderContainer>
           ))}
-          <OrderContainer>
-            <OrderItem>
-              <div />
-              <div>Sub-Total:</div>
-              <div>{formatPrice(subtotal)}</div>
-            </OrderItem>
-            <OrderItem>
-              <div />
-              <div>Tax:</div>
-              <div>{formatPrice(tax)}</div>
-            </OrderItem>
-            <OrderItem>
-              <div />
-              <div>Total:</div>
-              <div>{formatPrice(total)}</div>
-            </OrderItem>
-          </OrderContainer>
+          <OrderContainer >
+            <div>Cars</div>
+          <>
+          <div>
+              {Automobili.map(Automobili => (
+             <OrderItem>
+                        <div />
+                        <div>{Automobili.sifra}</div>
+                        <div/>
+                        <div>{Automobili.registracija}</div>
+                        <div/>
+                        <div>{Automobili.godina_proizvodnje}</div>
+                        <div/>
+                        <div>{Automobili.model_vozila}</div> 
+              </OrderItem>
+
+              ))}
+          </div>
+        </>
+        </OrderContainer>
         </OrderContent>
       )}
       <DialogFooter>

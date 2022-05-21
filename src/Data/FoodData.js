@@ -32,41 +32,31 @@ export const foodItems = [
         price: 2
 
     },
-    {
-        name: 'Burger',
-        img: '/img/burger.jpeg',
-        section: 'Sandwiches',
-        price: 3 
-    },
-    {
-        name: 'Gyro',
-        img: '/img/gyro.jpeg',
-        section: 'Sandwiches',
-        price: 4.5
-    },
-    {
-        name: 'Shrimp PoBoy',
-        img: '/img/sandwich.jpeg',
-        section: 'Sandwiches',
-        price: 6
-    },
-    {
-        name: 'Fries',
-        img: '/img/fries.jpeg',
-        section: 'Sides',
-        price: 1
-    },
-    {
-        price: 1,
-        name: 'Soda',
-        section: "Drinks",
-        choices: ['Coke', 'Sprite', 'Root Beer']
-    }
-
-
-
 ];
 
+export const Automobili = [
+    {
+        sifra: 'sifra1', 
+        registracija : 'registracija1', 
+        godina_proizvodnje : 'godina proizvodnje1',
+        model_vozila: 'model vozila1'
+
+    },
+    {
+        sifra: 'sifra2', 
+        registracija : 'registracija2', 
+        godina_proizvodnje : 'godina proizvodnje2',
+        model_vozila: 'model vozila2'
+
+    },
+    {
+        sifra: 'sifra3', 
+        registracija : 'registracija3', 
+        godina_proizvodnje : 'godina proizvodnje3',
+        model_vozila: 'model vozila3'
+
+    },
+]
 export const foods = foodItems.reduce((res, food) => {
     if(!res[food.section]){
         res[food.section] = [];

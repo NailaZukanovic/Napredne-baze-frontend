@@ -90,7 +90,9 @@ function hasToppings(food) {
   return food.section === "Pizzas";
 }
 
-function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
+function FoodDialogContainer({ openFood, setOpenFood,lsGetOrder,
+  lsOrders,
+  lsUzmiOrdere, orders }) {
   const quantity = useQuantity(openFood && openFood.quantity);
   const toppings = useToppings(openFood.toppings);
   const choiceRadio = useChoice(openFood.choice);
@@ -112,14 +114,20 @@ function FoodDialogContainer({ openFood, setOpenFood, setOrders, orders }) {
   function editOrder(){
     const newOrders = [...orders];
     newOrders[openFood.index] = order;
-    setOrders(newOrders);
+    // setOrders(newOrders);
+    lsGetOrder() //remove iz local storagea
+    lsOrders(newOrders); //postavi novi
+    orders = lsUzmiOrdere();
     close();
 
 
   }
  
   function addToOrder() {
-    setOrders([...orders, order]);
+    // setOrders();
+    lsGetOrder() //remove iz local storagea
+    lsOrders([...orders, order]); //postavi novi
+    orders = lsUzmiOrdere();
     close();
   }
   return (
